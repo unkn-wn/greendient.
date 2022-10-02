@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>greendient.</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+
+  
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section header-bg">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+          <a class="navbar-brand" href="index.html">
+             <span>
+              <b class="accent">green</b>dient.
+            </span>
+          </a>
+          
+
+          
+        </nav>
+      </div>
+    </header>
+  
+   
+
+  <section class="client_container">
+    <div class="outer-box screen-height">
+      <div class="center">
+        <h1>Enter a <b class="accent">meal:</b></h1>
+        
+        <form id="submit" method="GET">
+          <input type="text" placeholder="">
+          <button class="button-submit" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <section id="footer" class="container-fluid footer_section">
+    <p>
+      The Greendient Team
+    </p>
+    <p class="display: none;" id="recipedata"></p>
+  </section>
+
+
+  <script type="module" src="./main.js">
+    // import "./main.js";
+    document.getElementById("submit").addEventListener("submit", function (event) {
+      event.preventDefault();
+      var form = document.getElementById("submit");
+      var meal = form.elements[0].value;
+      query(meal);
+      // then((value) => {
+        // console.log(value);
+        // window.location.href = `/recipes.html?meal=${meal}&result=${value}`;
+      // });
+    });
+    
+  </script>
+</div>
+
+</body>
+
+</html>

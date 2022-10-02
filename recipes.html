@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>greendient.</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.5/css/lightslider.min.css" rel="stylesheet" />
+               
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.5/js/lightslider.min.js"></script>
+  
+</head>
+
+<style>
+    html::-webkit-scrollbar {
+        display: none;
+    }
+</style>
+
+<body>
+    <div class="hero_area">
+        <!-- header section strats -->
+        <header class="header_section header-bg">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+                <a class="navbar-brand" href="index.html">
+                    <span>
+                    <b class="accent">green</b>dient.
+                    </span>
+                </a>
+                
+
+                
+                </nav>
+                
+            </div>
+        
+        </header>
+    
+        
+    <div id="recipes" style="display:block;" class="carousel-margins">
+        <section class="client_container d-flex flex-row">
+            
+                <div class="left-align outer-box">
+                        <h1>select recipes for <b id="query" class="accent"></b><b class="accent">.</b></h1>
+
+                </div>
+                <a href="index.html" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                      </svg>
+                Back</a>
+        </section>
+        <div class="carousel-margins">
+            <ul id="lightSlider">
+                <li>
+                    <div class="carousel-slide">
+                        <div class="carousel-slides">
+                            <image src="/images/Lasagna-Recipe-f.jpg" class="slide-image"></image>
+                        </div>
+                        <div class="carousel-slides2">
+                            <h3>Lasagna with alex sauce and brad cheese and tevin sprinkles</h3>                <!--here-->
+                            <button class="btn btn-primary" type="button" onclick="showDiv()">select</button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="carousel-slide">
+                        <div class="carousel-slides">
+                            <image src="..." class="slide-image"></image>
+                        </div>
+                        <div class="carousel-slides2">
+                            <h3>A</h3>
+                            <button class="btn btn-primary" type="button" onclick="showDiv()">select</button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="carousel-slide">
+                        <div class="carousel-slides">
+                            <image src="..." class="slide-image"></image>
+                        </div>
+                        <div class="carousel-slides2">
+                            <h3>A</h3>
+                            <button class="btn btn-primary" type="submit">select</button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="carousel-slide">
+                        <div class="carousel-slides">
+                            <image src="..." class="slide-image"></image>
+                        </div>
+                        <div class="carousel-slides2">
+                            <h3>A</h3>
+                            <button class="btn btn-primary" type="submit">select</button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div id="detail" style="display:none" class="carousel-margins">
+        <section class="client_container d-flex flex-row">
+            
+            <div class="left-align outer-box">
+                    <h1>viewing recipe for <b id="recipename" class="accent"></b><b class="accent">.</b></h1>            <!-- title -->
+            </div>
+            <a class="btn btn-primary" onclick="showDiv()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                  </svg>
+            Back</a>
+        </section>
+        <br>
+        <br>
+        <section>
+            <div class="flex-row">
+                <div class="row">
+                    <div id="hihihi" class="detailcard"></div>
+                <div class="col">
+                    <h1 class="accent carbon-text"><span class="countup">152</span></h1>
+                    <p class="carbon-text2">carbon footprint</p>
+                    <div class="col align-items-center ingred-flex justify-content-center">
+                        <div class="row ingredients dropdown">
+                            <div class="col">
+                                <a onclick="dropdown(1)" style="margin-top: auto; margin-bottom: auto;" class="col card ingredient-card dropbtn black">
+                                    waterhnbmloons
+                                </a>
+                                <div id="1" class="dropdown-content opacity-50">
+                                    <li href="#">water</li>
+                                    <li href="#">apple</li>
+                                    <li href="#">cheese</li>
+                                </div>
+                            </div>
+                            <div style="display: flex; margin-top: 0px; margin-bottom: 0px;" class="ingredient-text accent col">
+                                <span style="margin-top: auto; margin-bottom: auto;" class="countup">150</span>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row ingredients justify-content-center dropdown">
+                            <div class="col ingredients">
+                                <a onclick="dropdown(2)" style="margin-top: auto; margin-bottom: auto;" class="col card ingredient-card dropbtn black">
+                                    tomato
+                                </a>
+                                <div id="2" class="dropdown-content opacity-50">
+                                    <li href="#">water</li>
+                                    <li href="#">apple</li>
+                                    <li href="#">cheese</li>
+                                </div>
+                            </div>
+                            <div style="display: flex; margin-top: 0px; margin-bottom: 0px;" class="ingredient-text accent col">
+                                <span class="countup">150</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+
+    <!-- grab the query from url -->
+    <script>
+        window.onload = function() {
+            var query = window.location.search.substring(1);
+            var vars = query.split("=");
+            var meal = vars[1];
+            meal = decodeURI(meal)
+
+            console.log(meal);
+            document.getElementById("query").innerHTML = meal;
+        }
+    </script>
+
+    <script>
+
+        $(document).ready(function() {
+            $("#lightSlider").lightSlider({
+                item: 3,
+                autoWidth: false,
+                slideMove: 1, // slidemove will be 1 if loop is true
+                slideMargin: 10,
+        
+                addClass: '',
+                mode: "slide",
+                useCSS: true,
+                cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
+                easing: 'linear', //'for jquery animation',////
+        
+                speed: 400, //ms'
+                auto: false,
+                loop: false,
+                slideEndAnimation: true,
+                pause: 2000,
+        
+                keyPress: false,
+                controls: true,
+                prevHtml: '',
+                nextHtml: '',
+        
+                rtl:false,
+                adaptiveHeight:false,
+        
+                vertical:false,
+                verticalHeight:5,
+                vThumbWidth:3,
+        
+                thumbItem:10,
+                pager: true,
+                gallery: false,
+                galleryMargin: 25,
+                thumbMargin: 25,
+                currentPagerPosition: 'middle',
+        
+                enableTouch:true,
+                enableDrag:true,
+                freeMove:true,
+                swipeThreshold: 40,
+        
+                responsive : [],
+        
+                onBeforeStart: function (el) {},
+                onSliderLoad: function (el) {},
+                onBeforeSlide: function (el) {},
+                onAfterSlide: function (el) {},
+                onBeforeNextSlide: function (el) {},
+                onBeforePrevSlide: function (el) {}
+            });
+        
+        });
+    </script>
+
+    <script>
+        function showDiv() {
+            if (document.getElementById('recipes').style.display == 'block') {
+                var image = event.target.parentElement.parentElement;
+                console.log(image)
+                document.getElementById('hihihi').innerHTML = image.innerHTML;
+                console.log(image.children[1].children[0].textContent);
+                document.getElementById('recipename').textContent = image.children[1].children[0].textContent;
+
+                $("#detail").slideDown(800);
+                $("#recipes").slideUp(800);
+                runAnimations();
+            } else {
+                $("#recipes").slideDown(800);
+                $("#detail").slideUp(800);
+            }
+
+        }
+
+        // How long you want the animation to take, in ms
+        const animationDuration = 1500;
+        // Calculate how long each ‘frame’ should last if we want to update the animation 60 times per second
+        const frameDuration = 1000 / 60;
+        // Use that to calculate how many frames we need to complete the animation
+        const totalFrames = Math.round( animationDuration / frameDuration );
+        // An ease-out function that slows the count as it progresses
+        const easeOutQuad = t => t * ( 2 - t );
+
+        // The animation function, which takes an Element
+        const animateCountUp = el => {
+            let frame = 0;
+            const countTo = parseInt( el.innerHTML, 10 );
+            // Start the animation running 60 times per second
+            const counter = setInterval( () => {
+                frame++;
+                // Calculate our progress as a value between 0 and 1
+                // Pass that value to our easing function to get our
+                // progress on a curve
+                const progress = easeOutQuad( frame / totalFrames );
+                // Use the progress value to calculate the current count
+                const currentCount = Math.round( countTo * progress );
+
+                // If the current count has changed, update the element
+                if ( parseInt( el.innerHTML, 10 ) !== currentCount ) {
+                    el.innerHTML = currentCount;
+                }
+
+                // If we’ve reached our last frame, stop the animation
+                if ( frame === totalFrames ) {
+                    clearInterval( counter );
+                }
+            }, frameDuration );
+        };
+
+        const runAnimations = () => {
+            const countupEls = document.querySelectorAll( '.countup' );
+            countupEls.forEach( animateCountUp );
+        };
+
+
+        //function to take vars from main.js and input into the "detail" id div
+
+
+    </script>
+
+    <script>
+        function dropdown(x) {
+            //document.getElementById("myDropdown").classList.toggle("show");
+            if (document.getElementById(x).style.display == 'block') {
+                $("#"+x).slideUp(400);
+                document.getElementById(x).classList.toggle("show");
+            } else {
+                $("#"+x).slideDown(400);
+                document.getElementById(x).classList.toggle("show");
+            }
+            
+        }
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+
+    </body>
+
+</html>
