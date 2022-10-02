@@ -1,4 +1,4 @@
-API_KEY="9a98f0bdbd99430a9fffb1aea0cf9534"
+API_KEY="15340e5b23d1467bb03bc7343910e99f"
 function makeRequest (method, url) {
     return new Promise(function (resolve, reject) {
       var xhr = new XMLHttpRequest();
@@ -128,6 +128,8 @@ var kaggleset = {"apples":0.43,
     }
     
     function kaggle(name) {
+        console.log(name.toLowerCase());
+        console.log(kaggleset.hasOwnProperty(name.toLowerCase()));
         if (kaggleset.hasOwnProperty(name.toLowerCase()))
             return kaggleset[name.toLowerCase()]
         else
@@ -223,7 +225,7 @@ var kaggleset = {"apples":0.43,
                     }
                     
                     // console.log(valuekg);
-                    dataset[ingredientname] = valuekg * kaggle("ingredientname")
+                    dataset[ingredientname] = valuekg * kaggle(ingredientname)
                     // console.log(valuekg);
                     console.log(dataset[ingredientname]);
                     carbon += dataset[ingredientname]

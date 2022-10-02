@@ -74,16 +74,19 @@
   </section>
 
 
-  <script type="module" src="./main.js">
+  <script>
     // import "./main.js";
     document.getElementById("submit").addEventListener("submit", function (event) {
       event.preventDefault();
       var form = document.getElementById("submit");
       var meal = form.elements[0].value;
-      query(meal);
+      console.log(meal);
+      window.location.href = "/recipes.html?meal=" + meal;
+      //query(meal);
       // then((value) => {
         // console.log(value);
-        // window.location.href = `/recipes.html?meal=${meal}&result=${value}`;
+        //window.location.href = ''
+        //window.location.href = `/recipes.html?meal=${meal}`;
       // });
     });
     
