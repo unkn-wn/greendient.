@@ -107,6 +107,8 @@ var kaggleset = {"apples":0.43,
                     "clove": [0.015],
                     "pinches": [0.005],
                     "pinch": [0.005],
+                    "sticks": [0.24],
+                    "stick": [0.24],
                     "": [0]
 }
     /*function CO2(valuekg,ingredientname) { //returns in kg	
@@ -128,8 +130,8 @@ var kaggleset = {"apples":0.43,
     }
     
     function kaggle(name) {
-        console.log(name.toLowerCase());
-        console.log(kaggleset.hasOwnProperty(name.toLowerCase()));
+        // console.log(name.toLowerCase());
+        // console.log(kaggleset.hasOwnProperty(name.toLowerCase()));
         if (kaggleset.hasOwnProperty(name.toLowerCase()))
             return kaggleset[name.toLowerCase()]
         else
@@ -215,11 +217,11 @@ var kaggleset = {"apples":0.43,
                     var unit = ingredient["amount"]["metric"]["unit"];
                     if (unit == "")
                         unit == "cup";
-                    var valuekg
+                    var valuekg;
                     console.log(value);
                     //req.open("GET", `https://api.spoonacular.com/recipes/convert?ingredientName=${ingredient["name"]}&sourceAmount=${value}&sourceUnit=${unit}&targetUnit=grams&apiKey=92b54ee6a39e4d6d973a2af30bd87b27`, false);
-                    if (value * conversions[unit] == "NaN") {
-                        valuekg = 0
+                    if (value * conversions[unit] == NaN) {
+                        valuekg = 0.16
                     } else {
                         valuekg = value * conversions[unit];
                     }
@@ -228,7 +230,8 @@ var kaggleset = {"apples":0.43,
                     dataset[ingredientname] = valuekg * kaggle(ingredientname)
                     // console.log(valuekg);
                     console.log(dataset[ingredientname]);
-                    carbon += dataset[ingredientname]
+                    console.log(valuekg);
+                    carbon += valuekg;
                     
                     if (substitutes.hasOwnProperty(ingredientname)) {
                         substitutions[ingredientname] = {}
