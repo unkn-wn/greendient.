@@ -220,7 +220,7 @@ var kaggleset = {"apples":0.43,
                     var valuekg;
                     console.log(value);
                     //req.open("GET", `https://api.spoonacular.com/recipes/convert?ingredientName=${ingredient["name"]}&sourceAmount=${value}&sourceUnit=${unit}&targetUnit=grams&apiKey=92b54ee6a39e4d6d973a2af30bd87b27`, false);
-                    if (value * conversions[unit] == NaN) {
+                    if (!conversions.hasOwnProperty(unit)) {
                         valuekg = 0.16
                     } else {
                         valuekg = value * conversions[unit];
