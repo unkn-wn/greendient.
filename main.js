@@ -1,4 +1,4 @@
-import { API_KEY } from "./api.js";
+API_KEY="9a98f0bdbd99430a9fffb1aea0cf9534"
 function makeRequest (method, url) {
     return new Promise(function (resolve, reject) {
       var xhr = new XMLHttpRequest();
@@ -68,22 +68,26 @@ var kaggleset = {"apples":0.43,
     "water": 0
 }
     function classify(ingredientnames) {
-        const xhr = new XMLHttpRequest();
-        xhr.onload = () => {
-            if (xhr.readyState === 4) {
-              if (xhr.status === 200) {
-                document.getElementById("classify").innerText = xhr.response;      
-              } else {
-                  console.error(xhr.statusText);
+        
+        return new Promise(function (resolve, reject) {
+            const xhr = new XMLHttpRequest();
+            xhr.onload = () => {
+                if (xhr.readyState === 4) {
+                  if (xhr.status === 200) {
+                    resolve(xhr.response);      
+                  } else {
+                      console.error(xhr.statusText);
+                    }
                 }
-            }
-        };
-        var input = []
-        for (var name of ingredientnames)
-            input.push({ "title": name, "upc": "", "plu_code": "" })
-        xhr.open("POST", `https://api.spoonacular.com/food/products/classifyBatch?apiKey=${API_KEY}`, false);
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.send(JSON.stringify(input));
+            };
+            var input = []
+            for (var name of ingredientnames)
+                input.push({ "title": name, "upc": "", "plu_code": "" })
+            xhr.open("POST", `https://api.spoonacular.com/food/products/classifyBatch?apiKey=${API_KEY}`, false);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.send(JSON.stringify(input));
+
+        });
     }
     var conversions = { "gram": 0.001,
                     "grams": 0.001,
@@ -146,14 +150,14 @@ var kaggleset = {"apples":0.43,
             for (var recipe of recipes.results){
                 recipeinfo(recipe).then(function (response) {
                     recipedata.push(response);
+                    console.log(recipedata);
+                    // window.location.href = `/recipes.html?meal=${recipename}&result=${recipedata}`;   
                 });
                 break;
             }
             recipedata.sort(comp)
             console.log(recipedata);  
-            window.location.href = `/recipes.html?meal=${recipename}&result=${recipedata}`;   
         })
-        xhr.send(null);
 
         //recipedata stores array of carbon, recipe, substitutions; where substitutions[ingred][sub] = change in CO2 by replacing ingred with sub
     }
@@ -164,19 +168,28 @@ var kaggleset = {"apples":0.43,
         var id = recipe['id']
         var title = recipe['title']
         var image = recipe['image']
-        var ingredients = JSON.parse(xhr.response)["ingredients"];
-        
-        var carbon = 0
-        var dataset = [] // "name", CO2eq
-        var substitutions = {};
 
-        var ingredientnames = [];
-        for (var ingredient of ingredients)
-            ingredientnames.push(ingredient['name'])
-        var classifiednames = classify(ingredientnames)
+        // var ingredientnames = [];
+        // for (var ingredient of ingredients)
+        //     ingredientnames.push(ingredient['name'])
+        // var classifiednames = classify(ingredientnames)
         return new Promise(function(resolve, reject) {
-            resolve(classify(ingredientnames).then(makeRequest("GET", `https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=${API_KEY}`)).then(function (response) {
-                ingredients = JSON.parse(response);
+            resolve(makeRequest("GET", `https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=${API_KEY}`).then(function (response) {
+            ingredients = JSON.parse(response).ingredients;
+            console.log(ingredients);
+            var ingredientnames = [];
+            for (var ingredient of ingredients)
+                ingredientnames.push(ingredient['name'])   
+            return [response, classify(ingredientnames)];
+            
+            }).then(function (response) {
+                var carbon = 2;
+                var dataset = [] // "name", CO2eq
+                var substitutions = {};
+                ingredients = JSON.parse(response[0]).ingredients;
+                var ingredientnames = [];
+                for (var ingredient of ingredients)
+                    ingredientnames.push(ingredient['name'])
                 for (var i = 0; i < ingredients.length; i++) {
                     //var ingredientname = classify(ingredient['name']);	
                     var ingredient = ingredients[i]
@@ -185,7 +198,7 @@ var kaggleset = {"apples":0.43,
                     var ingredientname = ingredient['name']
                     
                     if (!ingredientname in kaggleset){
-                        for (var breadcrumb in classifiednames[i]["breadcrumbs"]){
+                        for (var breadcrumb in response[1][i]["breadcrumbs"]){
                             if (breadcrumb in kaggleset){
                                 ingredientname = breadcrumb;
                                 break;
@@ -205,6 +218,7 @@ var kaggleset = {"apples":0.43,
           
           
                     dataset[ingredientname] = valuekg * kaggle("ingredientname")
+                    console.log(dataset[ingredientname]);
                     carbon += dataset[ingredientname]
                     
                     if (substitutes.hasOwnProperty(ingredientname)) {
@@ -214,9 +228,8 @@ var kaggleset = {"apples":0.43,
                         }
                     }
                     }
-                    return {carbon, recipe, ingredients, substitutions}
+                    return {carbon: carbon, recipe: recipe, ingredients: ingredients, substitutions: substitutions}
             }));
         });
     }
-
-    // query("lasagna")
+query("lasagna")
